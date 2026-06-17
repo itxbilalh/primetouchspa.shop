@@ -833,10 +833,10 @@ ul { list-style: none; }
 }
 
 .service-detailed-header {
-    padding: 36px 28px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+        padding: 36px 28px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
 }
 
 .service-detailed-icon {
@@ -1881,7 +1881,7 @@ ul { list-style: none; }
 /* ===== BACK TO TOP ===== */
 .back-to-top {
     position: fixed;
-    bottom: 120px;
+    bottom: 180px;
     right: 20px;
     z-index: 998;
     width: 44px;
