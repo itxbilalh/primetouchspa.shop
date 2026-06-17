@@ -43,6 +43,9 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     // ===== 6. INIT BOOKING FORM =====
     initBookingForm();
+
+    // ===== 7. INIT GOOGLE ADS GOALS =====
+    initGoogleAdsGoals();
 });
 
 // ===== NAVIGATION =====
@@ -262,6 +265,37 @@ function initContactForm() {
             );
             window.open('https://wa.me/923469153944?text=' + waText, '_blank');
         }, 500);
+    });
+}
+
+// ===== GOOGLE ADS GOALS TRACKING =====
+function initGoogleAdsGoals() {
+    // Track phone call clicks
+    const callLinks = document.querySelectorAll('a[href^="tel:"]');
+    const whatsappLinks = document.querySelectorAll('a[href*="wa.me/"]');
+
+    function trackConversion(sendTo) {
+        if (typeof window.gtag !== 'function') return;
+        window.gtag('event', 'conversion', {
+            send_to: sendTo,
+            value: 1.0,
+            currency: 'PKR'
+        });
+    }
+
+    callLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+            trackConversion('AW-18223468176/W_LPCJWk7r8cEJCd0PFD');
+        });
+    });
+
+    whatsappLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+            // TODO: Replace placeholder label with your actual WhatsApp conversion label
+            // from Google Ads. Create a new 'WhatsApp Click - Website' conversion action
+            // in Google Ads to get the label.
+            trackConversion('AW-18223468176/WHATSAPP_PLACEHOLDER');
+        });
     });
 }
 
