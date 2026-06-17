@@ -291,10 +291,7 @@ function initGoogleAdsGoals() {
 
     whatsappLinks.forEach(function(link) {
         link.addEventListener('click', function() {
-            // TODO: Replace placeholder label with your actual WhatsApp conversion label
-            // from Google Ads. Create a new 'WhatsApp Click - Website' conversion action
-            // in Google Ads to get the label.
-            trackConversion('AW-18223468176/WHATSAPP_PLACEHOLDER');
+            trackConversion('AW-18223468176/o7h5CMjI8MAcEJCd0PFD');
         });
     });
 }

@@ -52,6 +52,17 @@ I checked the live `Manage Google tag` popup in Google Ads. It shows:
 
 The account still shows an `URGENT` status on the Google tag card, so the account connection exists but still needs verification and cleanup before bidding should rely on it.
 
+### Newly Created WhatsApp Conversion
+
+I created a new Google Ads conversion action for WhatsApp clicks:
+
+- Conversion name: `WhatsApp Click - Website`
+- Category: `Contact`
+- Measurement type: click-based event snippet
+- Conversion label: `AW-18223468176/o7h5CMjI8MAcEJCd0PFD`
+
+Google Ads also created an additional generic `Contact` conversion action during the same flow. The developer should treat `WhatsApp Click - Website` as the one to wire into the site for WhatsApp button/link clicks.
+
 ## Current Google Ads State
 
 Based on the live Google Ads goals page:
@@ -230,11 +241,18 @@ After implementation, verify:
 - Phone number used across the site is `+92 346 9153944` / `+923469153944`.
 - WhatsApp number used across the site is `+923469153944`.
 
-## Next Step
+## Implementation Status
 
-After the Google Ads conversion actions are created or repaired, wire the events into the site and then verify:
+The following has been implemented:
 
-- phone clicks fire the `Phone call lead` conversion
-- WhatsApp clicks fire a separate WhatsApp conversion
-- the Google tag loads on every page
-- the account warning is resolved or explained in Google Ads
+- [x] Google tag (`AW-18223468176`) added to `<head>` of all 7 HTML pages
+- [x] Call conversion tracking fires on all `tel:` link clicks using label `W_LPCJWk7r8cEJCd0PFD`
+- [x] WhatsApp conversion tracking fires on all `wa.me/` link clicks using label `o7h5CMjI8MAcEJCd0PFD`
+- [x] Centralized click listeners in `js/script.js` via `initGoogleAdsGoals()`
+
+## Remaining Steps
+
+- [ ] Verify the `Phone call lead` conversion in Google Ads is no longer `Misconfigured` / `Inactive`
+- [ ] Resolve the `URGENT` status on the Google tag card in Google Ads
+- [ ] Mark `Get directions` as secondary or remove it from bidding if it is not a business goal
+- [ ] Test the tracking end-to-end: click phone and WhatsApp links, verify conversions appear in Google Ads within 24-48 hours

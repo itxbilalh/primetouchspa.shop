@@ -11,6 +11,11 @@ primetouchspa.shop/
 ├── testimonials.html     # Testimonials page
 ├── contact.html          # Contact page
 ├── book.html             # Book Now page
+├── 404.html              # Custom 404 error page
+├── sitemap.xml           # XML sitemap for search engines
+├── robots.txt            # Robots file for crawlers
+├── google-integration.md # Google Ads tracking docs
+├── instructions.md       # This file
 ├── css/
 │   └── styles.css        # Shared styles (glassmorphism theme)
 ├── js/
@@ -44,6 +49,9 @@ public_html/
 ├── testimonials.html
 ├── contact.html
 ├── book.html
+├── 404.html
+├── sitemap.xml
+├── robots.txt
 ├── css/
 ├── js/
 └── components/
@@ -108,6 +116,9 @@ Then open `http://localhost:8080`.
 | `js/script.js` | All JavaScript (component loader, nav, forms, animations) |
 | `components/header.html` | Site header (logo + navigation) |
 | `components/footer.html` | Site footer (links, contact, social) |
+| `404.html` | Custom 404 error page (self-contained glassmorphism) |
+| `sitemap.xml` | XML sitemap for Google and search engines |
+| `robots.txt` | Robots file for crawlers |
 
 ---
 
@@ -167,3 +178,6 @@ The 4 massage services are detailed in `services.html`. Each service card has:
 - [ ] Verify phone numbers link correctly (click-to-call on mobile)
 - [ ] Test sticky mobile bar at the bottom of the page (on mobile)
 - [ ] Replace the map placeholder with a real Google Maps embed (optional)
+- [ ] In cPanel, set the custom 404 error page to `/404.html`
+- [ ] Submit `https://primetouchspa.shop/sitemap.xml` to Google Search Console
+- [ ] Verify Google Ads conversion tracking fires on phone and WhatsApp clicks (see `google-integration.md`)
