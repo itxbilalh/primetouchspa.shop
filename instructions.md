@@ -161,6 +161,51 @@ The 4 massage services are detailed in `services.html`. Each service card has:
 
 ---
 
+## Google Ads Conversion Tracking (Implemented)
+
+Google Ads conversion tracking is already wired into the site. See `google-integration.md` for full details.
+
+| Conversion | Label | Fires on |
+|-----------|-------|----------|
+| Phone call lead | `AW-18223468176/W_LPCJWk7r8cEJCd0PFD` | Every `tel:` link click |
+| WhatsApp Click | `AW-18223468176/o7h5CMjI8MAcEJCd0PFD` | Every `wa.me/` link click |
+
+- Google tag (`AW-18223468176`) is in the `<head>` of all 7 HTML pages.
+- Click listeners are centralized in `js/script.js` via `initGoogleAdsGoals()`.
+- No code changes needed — just verify in Google Ads after deployment.
+
+---
+
+## Google Ads Conversion Tracking
+
+Google Ads conversion tracking is implemented in [`js/script.js`](./js/script.js). The Google tag is loaded in the `<head>` of every HTML page.
+
+### What's Tracked
+
+| Conversion | Label | Fires on |
+|---|---|---|
+| Phone call lead | `AW-18223468176/W_LPCJWk7r8cEJCd0PFD` | Any `tel:` link click |
+| WhatsApp Click - Website | `AW-18223468176/o7h5CMjI8MAcEJCd0PFD` | Any `wa.me/` link click |
+
+### How It Works
+
+- The `initGoogleAdsGoals()` function in `js/script.js` adds click listeners to all phone and WhatsApp links.
+- It fires a `gtag('event', 'conversion', { send_to: '...' })` call on each click.
+- This covers: hero CTA buttons, service page booking buttons, footer links, floating WhatsApp button, mobile sticky bar, and contact page cards.
+
+### Post-Deployment
+
+After uploading to cPanel:
+
+1. Wait 24-48 hours for Google Ads to start recording conversions.
+2. Check the Google Ads Goals page — the `Phone call lead` action should transition from `Misconfigured` to `Recording conversions`.
+3. The `WhatsApp Click - Website` conversion should also appear as `Recording conversions`.
+4. If conversions are not recording, verify the Google tag is loading correctly using [Google Tag Assistant](https://tagassistant.google.com/) browser extension.
+
+See [`google-integration.md`](./google-integration.md) for the full tracking documentation.
+
+---
+
 ## Known Limitations
 
 1. **JS dependency:** The header and footer are loaded dynamically via JavaScript. If a visitor has JavaScript disabled, inline fallback content (business name + phone) will display instead. The main page content will still be visible.
@@ -181,3 +226,5 @@ The 4 massage services are detailed in `services.html`. Each service card has:
 - [ ] In cPanel, set the custom 404 error page to `/404.html`
 - [ ] Submit `https://primetouchspa.shop/sitemap.xml` to Google Search Console
 - [ ] Verify Google Ads conversion tracking fires on phone and WhatsApp clicks (see `google-integration.md`)
+- [ ] Check Google Ads Goals page for `Phone call lead` and `WhatsApp Click - Website` showing as `Recording conversions`
+- [ ] Confirm `Phone call lead` conversion is no longer `Misconfigured` in Google Ads dashboard

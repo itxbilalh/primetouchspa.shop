@@ -686,9 +686,61 @@ ul { list-style: none; }
     align-items: center;
 }
 
+.hero-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
+
+.hero-bg-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+}
+
+.hero-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10, 15, 26, 0.6) 0%, rgba(10, 15, 26, 0.75) 30%, rgba(10, 15, 26, 0.9) 70%, var(--bg) 100%);
+}
+
 .hero .container {
     position: relative;
     z-index: 1;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.hero-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding: 8px 18px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 50px;
+}
+
+.hero-rating-stars {
+    color: var(--secondary);
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+}
+
+.hero-rating-text {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-light);
 }
 
 .hero-badge {
