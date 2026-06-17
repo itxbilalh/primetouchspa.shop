@@ -29,7 +29,10 @@ document.addEventListener('DOMContentLoaded', async function() {
         console.warn('Components loader:', e.message);
     }
 
-    // ===== 2. INIT SCROLL REVEAL =====
+    // ===== 2. INIT PARALLAX =====
+    initParallax();
+
+    // ===== 3. INIT SCROLL REVEAL =====
     initScrollReveal();
 
     // ===== 3. INIT SMOOTH SCROLL =====
@@ -151,6 +154,26 @@ function initBackToTop() {
     btn.addEventListener('click', function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+}
+
+// ===== PARALLAX SCROLL EFFECT =====
+function initParallax() {
+    var parallaxEls = document.querySelectorAll('.hero-bg-image, .page-hero-bg');
+    if (parallaxEls.length === 0) return;
+
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                var scrollY = window.pageYOffset;
+                parallaxEls.forEach(function(el) {
+                    el.style.transform = 'translate3d(0, ' + (scrollY * 0.25) + 'px, 0)';
+                });
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
 }
 
 // ===== SCROLL REVEAL ANIMATIONS =====
