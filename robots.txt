@@ -1,0 +1,19 @@
+# robots.txt for Prime Touch Spa
+# https://primetouchspa.shop/
+
+# Allow all crawlers full access
+User-agent: *
+Allow: /
+
+# Disallow internal component files (loaded via JS)
+Disallow: /components/
+
+# Disallow CSS and JS (not content pages)
+Disallow: /css/
+Disallow: /js/
+
+# Sitemap location
+Sitemap: https://primetouchspa.shop/sitemap.xml
+
+# Crawl delay (be nice to our server)
+Crawl-delay: 5
